@@ -54,3 +54,28 @@ function GetPermittedPostingDate(redMarkObjects, redMarkCost) {
         return currentDate
     }
 }
+
+// create a red mark file (object, worry about actual serialization later)
+function CreateRedMarkFile(targetPost, permittedPD, redMarkCost) {
+    NotImplemented()
+    // check to see if there is a pending post that would conflict with this mark
+    newPPD = new Date(permittedPD.getTime() + (redMarkCost * 1000 * 60 * 60 * 24))
+
+    pendingPosts = [] // need way to compare dates, not times.
+    // pendingPosts = navigator.fileSystem.Query(/Posts/*, x.date.getTime() > new Date() && x.date.getTime() <= newPPD) 
+
+    if (pendingPosts.length > 0) {
+        // throw an exception
+    }
+
+
+    // get a link to the target post
+    markObject = {
+        date: new Date(),
+        href: "target post address here"
+    }
+    // could add days to a permitted publishing date in a profile file (optimization)
+    // for now, just create the file.
+    // save file.
+
+}
