@@ -19,3 +19,7 @@ function GetAmericanDateString(dateObject) {
 function NotImplemented() {
     throw {name: "NotImplemented", message: "The calling function hasn't been implemented."}
 }
+
+function IsDefined(obj, prop) {
+    return typeof obj != "undefined" && typeof opj[prop] != "undefined"
+}
