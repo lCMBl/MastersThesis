@@ -21,7 +21,7 @@ function NotImplemented() {
 }
 
 function IsDefined(obj, prop) {
-    return typeof obj != "undefined" && typeof opj[prop] != "undefined"
+    return typeof obj != "undefined" && typeof obj[prop] != "undefined"
 }
 
 // https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/

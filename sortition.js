@@ -19,19 +19,35 @@ function Council(name, members, terminationCriteria) {
     this.terminationCriteria = terminationCriteria
 }
 
-function SelectMembers(possibleMembers, numToSelect) {
-    NotImplemented() // IMPORTANT: WHAT TO DO IF THERE AREN'T ENOUGH MEMBERS TO SELECT? JUST FAIL? WHAT ABOUT ROTATING COUNCILS?
-    if (numToSelect < possibleMembers.length) {
-        throw {name:"NotEnoughMembers", message:"Requested a council of " + numToSelect + " members, but only " + possibleMembers.length + " available"}
-    }
-    shuffledPMs = Shuffle(possibleMembers)
-    return shuffledPMs.splice(0,numToSelect)
-}
 // procedure is, count the number of times served on this council for all available members.
 // store them in an object like this: {name:"bob", timesServed:1} and store those objects in a list.
 // then, shuffle the list, and sort it with the following compare function. 
 // members will be grouped by number of times served, but in a random order. then, take from the front of the list.
 function compareTimesServed(a, b) {return a.timesServed - b.timesServed} 
+
+function SelectMembers(possibleMembers, numToSelect, orderByTimesServed=false) {
+    // if there aren't enough possible members (i.e. everyone is on an official council) then just throw an error.
+    if (numToSelect < possibleMembers.length) {
+        throw {name:"NotEnoughMembers", message:"Requested a council of " + numToSelect + " members, but only " + possibleMembers.length + " available"}
+    }
+
+    // first, shuffle the members
+    shuffledPMs = Shuffle(possibleMembers)
+
+    if (orderByTimesServed) {
+        // if we need to do a rotation model, then sort the shuffled members by number of times served
+        shuffledPMs.sort(compareTimesServed)
+    }
+
+    // finally, return the number needed.
+    return shuffledPMs.splice(0,numToSelect)
+}
+
+function GetTimesServed(members) {
+    NotImplemented()
+    return []
+}
+
 
 
 function MakeNewCouncil(name, members, membershipType, systemExclusive, terminationCriteria) {
@@ -39,7 +55,6 @@ function MakeNewCouncil(name, members, membershipType, systemExclusive, terminat
     // first, load all of the members in the community
     communityMembers = [] // placeholder for navigator.fileSystem.
     availableMembers = [] // add possible members here based on system exclusive, and later, rotation.
-
     // fill out the available members list
     if (systemExclusive) {
         occupiedMembers = [] // placeholder for navigator.fileSystem to find all members in currently active councils.
@@ -54,8 +69,6 @@ function MakeNewCouncil(name, members, membershipType, systemExclusive, terminat
         // then all community members are available.
         availableMembers = communityMembers
     }
-    
-
     // check our membership type
     if (membershipType == MembershipType.INVITATION) {
         // assume that members is a list of chosen members
@@ -64,30 +77,23 @@ function MakeNewCouncil(name, members, membershipType, systemExclusive, terminat
                 throw {name: "InvalidMember", message: "The member " + member + " was not available."}
             }
         }
-
         // membership checks out, create and return the new council.
         return new Council(name, members, terminationCriteria)
-
     } else if (membershipType == MembershipType.ROTATION) { // >>>>>>>>>>>>> do I need this in making a council? wouldn't it only matter in refreshing a council?
-        // first, get the members that have already participated on this council
-        prevMembers = [] // placeholder for query
-        
-        for (i= availableMembers.length - 1; i >= 0; i--) {
-            // starting at the end of the loop, remove members that are in the prevMembers list
-            if (prevMembers.includes(availableMembers[i])) {
-                removedMember = availableMembers.splice(i,1)
-                console.warn(removedMember[0] + " has already served on the " + name + " council. removing as an option")
-            }
-        }
-
-        return new Council(name, SelectMembers(availableMembers), terminationCriteria)
+        availableMembers = GetTimesServed(availableMembers)
+        return new Council(name, SelectMembers(availableMembers, members, true), terminationCriteria)
     } else if (membershipType == MembershipType.RANDOM) {
-        return new Council(name, SelectMembers(availableMembers), terminationCriteria)
+        return new Council(name, SelectMembers(availableMembers, members), terminationCriteria)
     } else {
         throw {name: "InvalidMembershipType", message: "An invalid type was given to create a council. Use the MembershipType enum"}
     }
+}
 
+function ChangeCouncilMemberStatus() {
+    // need to be able to modify the members of a council (add, remove, termlimit) without disbanding council
+    NotImplemented()
+}
 
-
-
+function RefreshStandingCouncil(councilName, numToAdd) {
+    NotImplemented()
 }
