@@ -19,6 +19,15 @@ function Council(name, members, terminationCriteria) {
     this.terminationCriteria = terminationCriteria
 }
 
+function SelectMembers(possibleMembers, numToSelect) {
+    NotImplemented() // IMPORTANT: WHAT TO DO IF THERE AREN'T ENOUGH MEMBERS TO SELECT? JUST FAIL? WHAT ABOUT ROTATING COUNCILS?
+    if (numToSelect < possibleMembers.length) {
+        throw {name:"NotEnoughMembers", message:"Requested a council of " + numToSelect + " members, but only " + possibleMembers.length + " available"}
+    }
+    shuffledPMs = Shuffle(possibleMembers)
+    return shuffledPMs.splice(0,numToSelect)
+}
+
 
 function MakeNewCouncil(name, members, membershipType, systemExclusive, terminationCriteria) {
     NotImplemented()
@@ -54,10 +63,21 @@ function MakeNewCouncil(name, members, membershipType, systemExclusive, terminat
         // membership checks out, create and return the new council.
         return new Council(name, members, terminationCriteria)
 
-    } else if (membershipType == MembershipType.ROTATION) {
+    } else if (membershipType == MembershipType.ROTATION) { // >>>>>>>>>>>>> do I need this in making a council? wouldn't it only matter in refreshing a council?
+        // first, get the members that have already participated on this council
+        prevMembers = [] // placeholder for query
+        
+        for (i= availableMembers.length - 1; i >= 0; i--) {
+            // starting at the end of the loop, remove members that are in the prevMembers list
+            if (prevMembers.includes(availableMembers[i])) {
+                removedMember = availableMembers.splice(i,1)
+                console.warn(removedMember[0] + " has already served on the " + name + " council. removing as an option")
+            }
+        }
 
+        return new Council(name, SelectMembers(availableMembers), terminationCriteria)
     } else if (membershipType == MembershipType.RANDOM) {
-
+        return new Council(name, SelectMembers(availableMembers), terminationCriteria)
     } else {
         throw {name: "InvalidMembershipType", message: "An invalid type was given to create a council. Use the MembershipType enum"}
     }
