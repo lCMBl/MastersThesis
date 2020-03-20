@@ -27,6 +27,11 @@ function SelectMembers(possibleMembers, numToSelect) {
     shuffledPMs = Shuffle(possibleMembers)
     return shuffledPMs.splice(0,numToSelect)
 }
+// procedure is, count the number of times served on this council for all available members.
+// store them in an object like this: {name:"bob", timesServed:1} and store those objects in a list.
+// then, shuffle the list, and sort it with the following compare function. 
+// members will be grouped by number of times served, but in a random order. then, take from the front of the list.
+function compareTimesServed(a, b) {return a.timesServed - b.timesServed} 
 
 
 function MakeNewCouncil(name, members, membershipType, systemExclusive, terminationCriteria) {
