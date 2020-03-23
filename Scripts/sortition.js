@@ -25,6 +25,20 @@ function Council(name, members, terminationCriteria) {
 // members will be grouped by number of times served, but in a random order. then, take from the front of the list.
 function compareTimesServed(a, b) {return a.timesServed - b.timesServed} 
 
+
+function GetRotatingCouncil(members, councilSize, sortingKey) {
+
+    function compareToKey(a, b) {return a[sortingKey] - b[sortingKey]}
+
+    Shuffle(members)
+
+    members.sort(compareToKey)
+
+    return members.splice(0, councilSize)
+
+}
+
+
 function SelectMembers(possibleMembers, numToSelect, orderByTimesServed=false) {
     // if there aren't enough possible members (i.e. everyone is on an official council) then just throw an error.
     if (numToSelect < possibleMembers.length) {

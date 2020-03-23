@@ -22,4 +22,17 @@ console.log(GetPermittedPostingDate(test3, 3))
 
 console.log("Setting up dummy DB...")
 SetupInitialDB()
-console.log(GetDB())
+// console.log(GetDB())
+
+let postForm = new FormData(document.getElementById("post_form"))
+let object = {};
+  formData.forEach((value, key) => {
+    if (!Reflect.has(object, key)) {
+      object[key] = value;
+      return;
+    }
+    if (!Array.isArray(object[key])) {
+      object[key] = [object[key]];
+    }
+    object[key].push(value);
+  })
