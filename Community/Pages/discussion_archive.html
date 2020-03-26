@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/> 
+    </head>
+    <body>
+        <h1>Discussion Archive</h1>
+        <br>
+        <form id="archive_search_form">
+            <label>Enter keywords or date: </label>
+            <input type="text" name="search_criteria">
+            <input type="submit" value="submit" id="submit_archive_search">
+        </form>
+        <br>
+        <h3>Results: </h3>
+        <div id="archive_search_results_container">
+            <div>
+                <h3><a href="discussion_view.html">What should we do with the empty lot?</a></h3>
+                <h4>Outcome: {result} </h4>
+                <p>Participating members: {# members} / {quorum #}</p>
+                <p>Opened {date} | Closed {date}</p>
+            </div>
+            <br>
+            <div>
+                <h3><a href="discussion_view.html">Setting up a local farmers market</a></h3>
+                <h4>Outcome: {result} </h4>
+                <p>Participating members: {# members} / {quorum #}</p>
+                <p>Opened {date} | Closed {date}</p>
+            </div>
+            <br>
+            <div>
+                <h3><a href="discussion_view.html">Tourists ignoring road sign</a></h3>
+                <h4>Outcome: {result} </h4>
+                <p>Participating members: {# members} / {quorum #}</p>
+                <p>Opened {date} | Closed {date}</p>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
