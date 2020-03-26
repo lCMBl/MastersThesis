@@ -4,6 +4,69 @@
         <meta charset="utf-8"/> 
     </head>
     <body>
-        
+        <h1>{question or topic}</h1>
+        <p>{Question details}</p>
+        <p>{# of rounds remaining} | {# of participants} / {# needed for quorum}</p>
+        <ul>
+            <li>{option 1}</li>
+            <li>{option 3}</li>
+            <li>{option 2}</li>
+        </ul>
+
+        <p>
+            Remember, by participating in this discussion, you promise to give your best, good-faith effort to 
+            make the best possible decision for your community.
+        </p>
+        <br>
+        <h3>Positions for round {current round number}:</h3>
+        <div id="positions_container">
+            <div>
+                <h4>{ option 2}</h4>
+                <p>
+                    I think option 2 is the best because its an even number.
+                </p>
+            </div>
+            <br>
+            <div>
+                <h4>{ option 1}</h4>
+                <p>
+                    I think option 1 is the best because its number 1. It's right there in the name!
+                </p>
+            </div>
+            <br>
+            <div>
+                <h4>{ undecided }</h4>
+                <p>
+                    I don't know what to belive anymore. lets talk further.
+                </p>
+            </div>
+        </div>
+
+        <!-- Input form for new position  -->
+        <label>I have read the above positions with unbiased attentiveness. I am ready to submit / revise my position.</label>
+        <br>
+        <input type="checkbox" id="form_unlock_checkbox" name="form_unlock">
+
+        <form id="new_position_form">
+            <label>Your position:</label> <br>
+            <select id="position_choice" name="position">
+                <option value="option_1">Option  1</option>
+                <option value="option_2">Option  2</option>
+                <option value="option_3">Option  3</option>
+                <option value="undecided">Undecided</option>
+            </select>
+            <br>
+            <label>Explain why you've taken this position.</label><br>
+            <input type="text" id="position_explanation" name="explanation">
+            <br>
+            <br>
+            <label>
+                I have provided a clear explanation for my position, without referencing previous positions,
+                 or compromising the anonymity of myself or anyone else. I understand that for this discussion
+                 to be fruitful, all participants must remain anonymous.</label><br>
+            <input type="checkbox" id="submit_unlock_checkbox" name="submit_unlock"><br>
+            <input type="submit" value="submit" id="submit_position">
+        </form>
+
     </body>
 </html>
