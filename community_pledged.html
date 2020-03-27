@@ -4,12 +4,14 @@
         <meta charset="utf-8"/> 
     </head>
     <body>
-        <h1>You have pledged to join {Community Name}!</h1>
-        <br>
-        <h3>Number of {pledged} members: # | {Establishment date or date of membership drive end}</h3>
-        <h2>{Distance from entered address}</h2>
-        <br>
-        <p>{Community description}</p>
+        <h1>You have pledged to join <span id="community_name"></span>!</h1>
+        <div id="community_info">
+
+        </div>
         <p>Should canceling a pledge be allowed?</p>
+        <script src="Scripts/Rendering/renderUtils.js"></script>
+        <script src="Scripts/Rendering/community.js"></script>
+        <script src="Scripts/Community/communityDummyData.js"></script>
+        <script src="Scripts/Community/communityPledged.js"></script>
     </body>
 </html>
