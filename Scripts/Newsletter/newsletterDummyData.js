@@ -37,6 +37,25 @@ foundPosts = [
     }
 ]
 
+pendingPosts = [
+    {
+        title:"Scrouge is terrible",
+        body:"Why do we even have him on here?",
+        author:"Christian",
+        href:"#", // actually a link to the author's public profile drive.
+        cdate:"03-24-2020",
+        pdate:"03-25-2020"
+    },
+    {
+        title:"Too much hostility",
+        body:"There has been too much anger lately. I've contributed to it too for which I'm Sorry.",
+        author:"Christian",
+        href:"#", // actually a link to the author's public profile drive.
+        cdate:"03-24-2020",
+        pdate:"03-25-2020"
+    }
+]
+
 // how to handle red marks? store marks in seperate files for sure, so need to be a separate collection.
 // also, link by title and author for now, but eventually a red mark file will be a .goto with appropriate metadata.
 foundMarks = [
@@ -73,6 +92,10 @@ function GetRedMarks() {
 
 function GetPosts() {
     return foundPosts // again, we'll actually need to query by date here.
+}
+
+function GetPendingPosts() {
+    return pendingPosts
 }
 
 // function GetPosts(date) {

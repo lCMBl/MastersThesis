@@ -24,6 +24,19 @@ function GetRenderPost(post) {
     `
 }
 
+function GetRenderPendingPost(post) {
+    sameDate = DateCheck(new Date(), new Date(post.pdate))
+    return `
+    <div>
+    <h4>${post.title}</h4>
+    <p>Posted by <a href="${post.href}">${post.author}</a></p>
+    <p>${post.body}</p>
+    ${!sameDate ? `<p><a href="#">Delete this Post</a></p>` : ""}
+    </div>
+    <br>
+    `
+}
+
 /*
 {
         href:"Aunt JemimaFree Vegetables!",
