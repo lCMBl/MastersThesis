@@ -5,7 +5,8 @@
     </head>
     <body>
         <h1>Make a new Post</h1>
-        <h3>Posts submitted before 8pm will be published on <span id="publish_date">{publish date}</span> at 8am.</h3>
+        <!-- Posts submitted in the next <span id="time_to_publish"></span> -->
+        <h3>Posts submitted now will be published on <span id="publish_date">{publish date}</span> at 8am.</h3>
         <br>
         <form id="new_post_form">
             <label>Post Title:</label><br>
@@ -15,5 +16,7 @@
             
             <input type="submit" value="submit" id="submit_post">
         </form>
+        <script src="../../Scripts/utils.js"></script>
+        <script src="../../Scripts/Newsletter/newsletterNewPost.js"></script>
     </body>
 </html>
