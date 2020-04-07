@@ -1,0 +1,56 @@
+function GetRenderCouncilStats(councilStats) {
+    // include in council stats the community, currentUser, and assignedCircle
+    cdate = new Date(councilStats.assignedCircle.cdate)
+    rolloverDate = new Date(cdate.getTime() + (councilStats.community.discussionParams.councilRotationTime * 24 * 60 * 60 * 1000))
+    dr = DaysRemaining(new Date(), rolloverDate)
+    
+    memberListStrings = ''
+    councilStats.assignedCircle.memberHrefs.forEach(m => {
+        if (m == councilStats.currentUser.name) {
+            memberListStrings += `<li><h3>${m}</h3></li>`
+        } else {
+            memberListStrings += `<li>${m}</li>`
+        }
+    })
+    return `
+    <h3>Time remaining before rotation: ${dr} days</h3>
+        <ul>
+            ${memberListStrings}
+        </ul>
+    `
+}
+
+// {
+//     subject:"Setting up a local farmer's market",
+//     description:`We have some very talented gardeners here, like Aunt Jemima and
+//     her tomatoes, and Scrouge and his prunes. Lets set up a space for them to 
+//     strut their stuff! This would also let us support their effors to enrich our community.
+//     The real question is, if we do this, where would we put it?`,
+//     positions:{ // need a way to sanitize inputs for use as ID's?
+//         the_old_lot:"The old lot",
+//         the_community_park:"The community park",
+//         no_farmers_market:"No farmer's market"
+//     },
+//     participatingMemberHrefs:[
+//         "Aunt Jemima",
+//         "Scrouge",
+//         "Christian"
+//     ],
+//     cdate:"03-24-2020",
+//     decision:"undecided",
+//     ddate:"null"
+// }
+
+function GetRenderDiscussionStub(councilStats) {
+    // include in council stats the community, discussion, and assignedCircle
+    discussion = councilStats.discussion
+    roundsLeft = DaysRemaining(new Date(), new Date(discussion.deadline))
+    return `
+    <div>
+        <h3><a href="discussion_view.html?subject=${discussion.subject}">${discussion.subject}</a></h3>
+        <p>Participating members: ${discussion.participatingMemberHrefs.length} / ${councilStats.community.discussionParams.quorumNumber}</p>
+        <p>Opened ${discussion.cdate} | ${roundsLeft} rounds left</p>
+    </div>
+    `
+    // ROUND NUMBER IS DETERMINED BY NUMBER OF DAYS FROM CREATION. (ONE ROUND A DAY).
+}

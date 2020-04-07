@@ -4,14 +4,15 @@
         <meta charset="utf-8"/> 
     </head>
     <body>
-        <h1>{group name} Active Discussions</h1>
+        <h1><span id=group_name></span> Active Discussions</h1>
         <br>
-        <h3>Time remaining before rotation: {# days}</h3>
+        <div id="circle_stats_container"></div>
+        <!-- <h3>Time remaining before rotation: {# days}</h3>
         <ul>
             <li>Bob</li>
             <li>Frank</li>
             <li><h3>Jill</h3></li>
-        </ul>
+        </ul> -->
         <br>
         <h3>Remember! Clicking on a discussion's link joins that discussion.
              Once you are participating in a discussion, you must see it through.</h3>
@@ -51,5 +52,10 @@
             <br>
             <input type="submit" value="submit" id="submit_new_discussion">
         </form>
+        <script src="../../Scripts/Discussion/discussionDummyData.js"></script>
+        <script src="../../Scripts/utils.js"></script>
+        <script src="../../Scripts/Rendering/renderUtils.js"></script>
+        <script src="../../Scripts/Rendering/discussion.js"></script>
+        <script src="../../Scripts/Discussion/discussionView.js"></script>
     </body>
 </html>

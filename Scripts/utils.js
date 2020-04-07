@@ -45,3 +45,10 @@ function Shuffle(array) {
 	return array
 
 }
+
+function DaysRemaining(startDate, deadlineDate) {
+	msDelta = deadlineDate.getTime() - startDate.getTime()
+	days = Math.ceil(msDelta / (24 * 60 * 60 * 1000)) // using ceiling because we want to say "one day left" 
+	// on the day before the cutoff, i.e. <24 hours to go.
+	return days
+}
