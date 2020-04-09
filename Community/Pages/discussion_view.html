@@ -14,35 +14,16 @@
         </p>
         <br>
         <h3>Positions for round <span id="current_round_num">{current round number}</span>:</h3>
-        <div id="positions_container">
-            <div>
-                <h4>{ option 2}</h4>
-                <p>
-                    I think option 2 is the best because its an even number.
-                </p>
-            </div>
-            <br>
-            <div>
-                <h4>{ option 1}</h4>
-                <p>
-                    I think option 1 is the best because its number 1. It's right there in the name!
-                </p>
-            </div>
-            <br>
-            <div>
-                <h4>{ undecided }</h4>
-                <p>
-                    I don't know what to belive anymore. lets talk further.
-                </p>
-            </div>
+        <div id="stakes_container">
         </div>
 
         <!-- Input form for new position  -->
         <label>I have read the above positions with unbiased attentiveness. I am ready to submit / revise my position.</label>
         <br>
         <input type="checkbox" id="form_unlock_checkbox" name="form_unlock">
+         <!-- onclick="DisplayForm()"> -->
 
-        <form id="new_position_form">
+        <form id="new_stake_form">
             <label>Your position:</label> <br>
             <select id="position_choice" name="position">
                 <option value="option_1">Option  1</option>
@@ -52,6 +33,11 @@
                 <option value="new">Take a new position</option>
             </select>
             <br>
+            <div id="new_position_form">
+                <label>Enter the position you would like to take:</label><br>
+                <input type="text" id="new_position" name="new_position">
+                <br>
+            </div>
             <label>Explain why you've taken this position.</label><br>
             <input type="text" id="position_explanation" name="explanation">
             <br>

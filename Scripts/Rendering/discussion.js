@@ -98,3 +98,14 @@ function GetRenderStake(stake) {
     <br>
     `
 }
+
+function GetRenderPositionOption(option) {
+    /*
+    <option value="option_1">Option  1</option>
+    <option value="option_2">Option  2</option>
+    <option value="option_3">Option  3</option>
+    <option value="undecided">Undecided</option>
+    <option value="new">Take a new position</option> 
+    */
+    return `<option value="${option}">${option}</option>`
+}
