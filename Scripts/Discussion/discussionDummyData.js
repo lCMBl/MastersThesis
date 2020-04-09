@@ -46,11 +46,16 @@ foundDiscussionBoardDiscussions = [
         her tomatoes, and Scrouge and his prunes. Lets set up a space for them to 
         strut their stuff! This would also let us support their effors to enrich our community.
         The real question is, if we do this, where would we put it?`,
-        positions:{ // need a way to sanitize inputs for use as ID's?
-            the_old_lot:"The old lot",
-            the_community_park:"The community park",
-            no_farmers_market:"No farmer's market"
-        },
+        // positions:{ // need a way to sanitize inputs for use as ID's?
+        //     the_old_lot:"The old lot",
+        //     the_community_park:"The community park",
+        //     no_farmers_market:"No farmer's market"
+        // },
+        positions:[
+            "The old lot",
+            "The community park",
+            "No farmer's market"
+        ],
         participatingMemberHrefs:[
             "Aunt Jemima",
             "Scrouge",
@@ -111,6 +116,14 @@ function GetCurrentCircle() {
 
 function GetActiveDiscussions() {
     return foundDiscussionBoardDiscussions
+}
+
+function GetActiveDiscussionsDict() {
+    results = {}
+    foundDiscussionBoardDiscussions.forEach(d => {
+        results[d.subject] = d
+    })
+    return results
 }
 
 function GetDiscussionStakes() {

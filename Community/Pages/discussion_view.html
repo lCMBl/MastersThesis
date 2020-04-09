@@ -4,21 +4,16 @@
         <meta charset="utf-8"/> 
     </head>
     <body>
-        <h1>{question or topic}</h1>
-        <p>{Question details}</p>
-        <p>{# of rounds remaining} | {# of participants} / {# needed for quorum}</p>
-        <ul>
-            <li>{option 1}</li>
-            <li>{option 3}</li>
-            <li>{option 2}</li>
-        </ul>
+        <h1 id="discussion_subject">{question or topic}</h1>
+        <p id="discussion_description">{Question details}</p>
+        <div id="discussion_stats"></div>
 
         <p>
             Remember, by participating in this discussion, you promise to give your best, good-faith effort to 
             make the best possible decision for your community.
         </p>
         <br>
-        <h3>Positions for round {current round number}:</h3>
+        <h3>Positions for round <span id="current_round_num">{current round number}</span>:</h3>
         <div id="positions_container">
             <div>
                 <h4>{ option 2}</h4>
@@ -68,6 +63,10 @@
             <input type="checkbox" id="submit_unlock_checkbox" name="submit_unlock"><br>
             <input type="submit" value="submit" id="submit_position">
         </form>
-
+        <script src="../../Scripts/Discussion/discussionDummyData.js"></script>
+        <script src="../../Scripts/utils.js"></script>
+        <script src="../../Scripts/Rendering/renderUtils.js"></script>
+        <script src="../../Scripts/Rendering/discussion.js"></script>
+        <script src="../../Scripts/Discussion/discussionView.js"></script>
     </body>
 </html>
