@@ -109,3 +109,18 @@ function GetRenderPositionOption(option) {
     */
     return `<option value="${option}">${option}</option>`
 }
+
+
+function GetRenderArchiveDiscussionStub(discussion) {
+    numParticipants = discussion.participatingMemberHrefs.length
+    qNum = discussion.quorumNumber
+    return `
+    <div>
+        <h3><a href="discussion_archive_view.html?subject=${discussion.subject}">${discussion.subject}</a></h3>
+        <h4>Outcome: ${discussion.decision} </h4>
+        <p>Participating members: ${numParticipants} / ${qNum}</p>
+        <p>Opened ${discussion.cdate} | Closed ${discussion.ddate}</p>
+    </div>
+    <br>
+    `
+}

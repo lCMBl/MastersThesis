@@ -62,7 +62,7 @@ foundDiscussionBoardDiscussions = [
             "Christian"
         ],
         cdate:"03/24/2020",
-        decision:"undecided",
+        decision:"Undecided",
         ddate:"null",
         deadline:"03/29/2020"
     }
