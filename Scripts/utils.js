@@ -52,3 +52,14 @@ function DaysRemaining(startDate, deadlineDate) {
 	// on the day before the cutoff, i.e. <24 hours to go.
 	return days
 }
+
+function GetTally(stakes) {
+    tally = {}
+    stakes.forEach(s => {
+        if (!IsDefined(tally, s.position)) {
+            tally[s.position] = 0
+        }
+        tally[s.position] += 1
+    })
+    return tally
+}

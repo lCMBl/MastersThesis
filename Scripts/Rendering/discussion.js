@@ -77,6 +77,28 @@ function GetRenderDiscusionStats(discussion) {
     `
 }
 
+// add the quorum number to the discussion object.
+function GetRenderDiscussionFinalStats(discussion) {
+    daysUsed = DaysRemaining(new Date(discussion.cdate), new Date(discussion.ddate))
+    numParticipants = discussion.participatingMemberHrefs.length
+    qNum = discussion.quorumNumber
+
+    optionListStrings = ''
+    discussion.positions.forEach(p => {
+        optionListStrings += `<li>${p}</li>`
+    })
+    optionListStrings += `<li>Undecided</li>`
+
+    return `
+    <h3>Final Decision: ${discussion.decision}</h3>
+    <p> Completed after ${daysUsed} days | Quorum: ${numParticipants} / ${qNum} participants</p>
+    <p>Discussed options:</p>
+    <ul>
+        ${optionListStrings}
+    </ul>
+    `
+}
+
 function GetRenderStake(stake) {
     /*
     {
@@ -124,3 +146,5 @@ function GetRenderArchiveDiscussionStub(discussion) {
     <br>
     `
 }
+
+

@@ -68,7 +68,6 @@ foundDiscussionBoardDiscussions = [
     }
 ]
 
-// need moderator and agenda collections as well. use stakes to describe the positions members take.
 foundDiscussionBoardStakes = [
     {
         author:"Christian", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
@@ -93,6 +92,56 @@ foundDiscussionBoardStakes = [
         explanation:`Both the park and the old lot see a lot of traffic. Its already bad enough!
         I dont want any more traffic!`,
         cdate:"03/24/2020"
+    }
+]
+
+foundArchivedDiscussions = [
+    {
+        subject:"Should we Stay Inside?",
+        description:`It's cold and there's a virus. Should we stay inside today?`,
+        // positions:{ // need a way to sanitize inputs for use as ID's?
+        //     the_old_lot:"The old lot",
+        //     the_community_park:"The community park",
+        //     no_farmers_market:"No farmer's market"
+        // },
+        positions:[
+            "Yes",
+            "No"
+        ],
+        participatingMemberHrefs:[
+            "Aunt Jemima",
+            "Scrouge",
+            "Christian"
+        ],
+        cdate:"03/24/2020",
+        decision:"Yes",
+        ddate:"03/26/2020",
+        deadline:"03/29/2020"
+    }
+]
+
+// need moderator and agenda collections as well. use stakes to describe the positions members take.
+foundArchiveStakes = [
+    {
+        author:"Christian", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
+        // however, this isn't shown to people (needs to be anonymous)
+        position:"No",
+        explanation:`I'm going crazy in here!`,
+        cdate:"03/24/2020, 08:00:00"
+    },
+    {
+        author:"Aunt Jemima", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
+        // however, this isn't shown to people (needs to be anonymous)
+        position:"Yes",
+        explanation:`I don't want to get sick or be cold.`,
+        cdate:"03/24/2020, 08:00:00"
+    },
+    {
+        author:"Scrouge", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
+        // however, this isn't shown to people (needs to be anonymous)
+        position:"Yes",
+        explanation:`I don't like people`,
+        cdate:"03/24/2020, 08:00:00"
     }
 ]
 
@@ -128,4 +177,20 @@ function GetActiveDiscussionsDict() {
 
 function GetDiscussionStakes() {
     return foundDiscussionBoardStakes
+}
+
+function GetArchivedDiscussions() {
+    return foundArchivedDiscussions
+}
+
+function GetArchivedDiscussionsDict() {
+    results = {}
+    foundArchivedDiscussions.forEach(d => {
+        results[d.subject] = d
+    })
+    return results
+}
+
+function GetArchivedDiscussionStakes() {
+    return foundArchiveStakes
 }
