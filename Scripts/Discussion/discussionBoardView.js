@@ -21,7 +21,7 @@ discussions.forEach(d => {
     } 
 })
 
-SetText("group_name", community.name)
+SetText("group_name", `${community.name} ${assignedCircle.name}`)
 
 // include in council stats the community, currentUser, and assignedCircle
 councilStats = {community:community, currentUser:currentUser, assignedCircle:assignedCircle}
