@@ -47,14 +47,14 @@ function Shuffle(array) {
 }
 
 function DaysRemaining(startDate, deadlineDate) {
-	msDelta = deadlineDate.getTime() - startDate.getTime()
-	days = Math.ceil(msDelta / (24 * 60 * 60 * 1000)) // using ceiling because we want to say "one day left" 
+	let msDelta = deadlineDate.getTime() - startDate.getTime()
+	let days = Math.ceil(msDelta / (24 * 60 * 60 * 1000)) // using ceiling because we want to say "one day left" 
 	// on the day before the cutoff, i.e. <24 hours to go.
 	return days
 }
 
 function GetTally(stakes) {
-    tally = {}
+    let tally = {}
     stakes.forEach(s => {
         if (!IsDefined(tally, s.position)) {
             tally[s.position] = 0
@@ -62,4 +62,26 @@ function GetTally(stakes) {
         tally[s.position] += 1
     })
     return tally
+}
+
+
+
+function SaveLocal(key, item) {
+	let appData = JSON.parse(localStorage.getItem("communityApp"))
+	appData[key] = item
+	localStorage.setItem("communityApp", JSON.stringify(appData))
+}
+
+function GetLocal(key) {
+	let appData = JSON.parse(localStorage.getItem("communityApp"))
+	return appData[key]
+}
+
+function GetLocalDict(key, propertyName) {
+	let appData = JSON.parse(localStorage.getItem("communityApp"))
+	let results = {}
+    appData[key].forEach(it => {
+        results[it[propertyName]] = it
+    })
+    return results
 }

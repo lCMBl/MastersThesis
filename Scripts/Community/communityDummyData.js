@@ -8,7 +8,13 @@ foundCommunities = [
         units:"feet",
         creationDate:"Jan 30, 2020",
         establishmentDate:"Mar 3, 2020",
-        memberCount:16
+        memberCount:16,
+        // list of community params related to the discussion
+        discussionParams:{
+            councilRotationTime:30,
+            quorumNumber:3, // could use different quorum numbers for each council later
+            maxRounds:5
+        }
     },
     {
         name:"Cheyenne Mountain",
@@ -18,7 +24,13 @@ foundCommunities = [
         units:"meters",
         creationDate:"Mar 26, 2020",
         establishmentDate:"Apr 26, 2020",
-        memberCount:3
+        memberCount:3,
+        // list of community params related to the discussion
+        discussionParams:{
+            councilRotationTime:30,
+            quorumNumber:3, // could use different quorum numbers for each council later
+            maxRounds:5
+        }
     }
 ]
 
