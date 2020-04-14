@@ -37,6 +37,7 @@ function OnClickSubmit(e) {
         posts[pdateString] = []
     }
     posts[pdateString].push(newPost)
+    SaveLocal("foundPosts", posts)
     // await save file here
     window.location.replace("/home/cmb/Desktop/MastersThesis/Community/Pages/newsletter_view.html")
 }
