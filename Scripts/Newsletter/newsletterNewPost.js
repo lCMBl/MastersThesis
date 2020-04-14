@@ -11,6 +11,8 @@ remainingTimeS == remainingTimeM * 60
 // document.getElementById("time_to_publish").innerText = `${remainingTimeH}:${remainingTimeM}:${remainingTimeS}`
 document.getElementById("publish_date").innerText = GetAmericanDateString(pubDate)
 
+currentUser = GetLocal("currentUser")
+
 var postForm = document.getElementById("new_post_form")
 var submitButton = document.getElementById("submit_post")
 postForm.addEventListener('submit', OnClickSubmit)
@@ -18,14 +20,23 @@ postForm.addEventListener('submit', OnClickSubmit)
 function OnClickSubmit(e) {
     e.preventDefault()
 
-    newPost = {
+    let newPost = {
         title:postForm.post_title.value,
         body:postForm.post_body.value,
-        broadcast:postForm.broadcast.checked
+        broadcast:postForm.broadcast.checked,
+        author:currentUser.name,
+        href:"#",
+        cdate:new Date(),
+        pdate:new Date(new Date().getTime() + offset)
     }
 
-    // temporarily assign to global variable, to ensure that this works.
-    window.newPost = newPost
+    // store new post in app info
+    let posts = GetLocal("foundPosts")
+    pdateString = GetAmericanSlashDateString(newPost.pdate)
+    if (!IsDefined(posts, pdateString)) {
+        posts[pdateString] = []
+    }
+    posts[pdateString].push(newPost)
     // await save file here
     window.location.replace("/home/cmb/Desktop/MastersThesis/Community/Pages/newsletter_view.html")
 }

@@ -16,6 +16,10 @@ function GetAmericanDateString(dateObject) {
     return '' + (dateObject.getMonth() + 1) + '-' + dateObject.getDate() + "-" + dateObject.getFullYear()
 }
 
+function GetAmericanSlashDateString(dateObject) {
+    return '' + (dateObject.getMonth() + 1) + '/' + dateObject.getDate() + "/" + dateObject.getFullYear()
+}
+
 function NotImplemented() {
     throw {name: "NotImplemented", message: "The calling function hasn't been implemented."}
 }
