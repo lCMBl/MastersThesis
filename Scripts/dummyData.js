@@ -23,7 +23,7 @@ localStorage.setItem("communityApp", JSON.stringify({}))
 
 //= Add Communities
 // 
-SaveLocal("foundCommunities", [
+SaveLocal("communities", [
     {
         name:"Jenkins Park",
         description:"This is the community centered on jenkins park, in southwest colorado springs.",
@@ -38,6 +38,9 @@ SaveLocal("foundCommunities", [
             councilRotationTime:30,
             quorumNumber:3, // could use different quorum numbers for each council later
             maxRounds:5
+        },
+        location:{
+            zipCode:80905
         }
     },
     {
@@ -54,6 +57,9 @@ SaveLocal("foundCommunities", [
             councilRotationTime:30,
             quorumNumber:3, // could use different quorum numbers for each council later
             maxRounds:5
+        },
+        location:{
+            zipCode:80906
         }
     }
 ])

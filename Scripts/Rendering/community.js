@@ -17,7 +17,11 @@ function GetCommunityStatus(communityEstablished) {
 }
 
 function GetRenderAddressInfo(addressInfo) {
-    return `<h3>Showing communities within ${addressInfo.searchRadius} ${addressInfo.units} from ${addressInfo.address}.</h3>`
+    return `<h3>Showing communities in the ${addressInfo.searchRadius} ${addressInfo.units} from ${addressInfo.address}.</h3>`
+}
+
+function GetRenderZipcodeSearchReminder(zipcode) {
+    return `<h3>Showing communities in the ${zipcode} Area Code.</h3>`
 }
 
 function GetRenderCommunityStats(communityInfo) {
