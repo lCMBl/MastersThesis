@@ -1,7 +1,10 @@
-foundCommunities = GetCommunitiesDict()
-// get the index from the query param
-const urlParams = new URLSearchParams(window.location.search)
-const community = foundCommunities[urlParams.get('name')]
+// foundCommunities = GetCommunitiesDict()
+// // get the index from the query param
+// const urlParams = new URLSearchParams(window.location.search)
+// const community = foundCommunities[urlParams.get('name')]
+
+let currentUser = GetLocal("currentUser")
+let community = GetLocalDict("communities", "name")[currentUser.community]
 
 // set the community name text
 SetText("community_name", community.name)

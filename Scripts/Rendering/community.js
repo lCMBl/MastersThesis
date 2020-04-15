@@ -1,9 +1,12 @@
 function GetRenderCommunityBlurb(communityInfo) {
+    /*
+    <p>${communityInfo.distance} ${communityInfo.units} from your address.</p>
+        <p>${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</p>
+    */
     return `
     <div>
-        <a href="community_view.html?name=${communityInfo.name}">${communityInfo.name}</a><br>
-        <p>${communityInfo.distance} ${communityInfo.units} from your address.</p>
-        <p>${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</p>
+        <h4><a href="community_view.html?name=${communityInfo.name}">${communityInfo.name}</a> | 
+        ${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</h4>
     </div>
     `
 }
@@ -21,24 +24,20 @@ function GetRenderAddressInfo(addressInfo) {
 }
 
 function GetRenderZipcodeSearchReminder(zipcode) {
-    return `<h3>Showing communities in the ${zipcode} Area Code.</h3>`
+    return `<h3>Showing communities in the ${zipcode} Area Code. <a href="community_search.html">Search Again</a></h3>`
 }
 
 function GetRenderCommunityStats(communityInfo) {
     return `
     <h2>Number of ${communityInfo.established ? "": "pledged "} members: ${communityInfo.memberCount} | 
-    ${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</h2>
-    <h3>${communityInfo.distance} ${communityInfo.units} away.</h3>
-    <br>
+    ${GetCommunityStatus(communityInfo.established)} ${GetAmericanSlashDateString(new Date(communityInfo.establishmentDate))}</h2>
     `
 }
 
 function GetRenderCommunityInfo(communityInfo) {
     return `
     <h2>Number of ${communityInfo.established ? "": "pledged "} members: ${communityInfo.memberCount} | 
-    ${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</h2>
-    <h3>${communityInfo.distance} ${communityInfo.units} away.</h3>
-    <br>
+    ${GetCommunityStatus(communityInfo.established)} ${GetAmericanSlashDateString(new Date(communityInfo.establishmentDate))}</h2>
     <p>${communityInfo.description}</p>
     `
 }

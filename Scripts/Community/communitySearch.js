@@ -15,8 +15,8 @@ function CommunitySearch(e) {
         })
         SaveLocal("communitySearchResults", results)
         SaveLocal("searchedZipCode", zipCode)
-        window.location.href("/home/cmb/Desktop/MastersThesis/community_search_results.html")
-        // window.location.replace removes the current address from the history list, making the back button unusable.
+        window.location.href = "/home/cmb/Desktop/MastersThesis/community_search_results.html"
+        // window.location.replace() removes the current address from the history list, making the back button unusable.
     } catch(e) {
         // this is where code to display the error message would go.
         console.warn(e)
