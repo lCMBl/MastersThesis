@@ -38,6 +38,7 @@ function NewCommunity(e) {
 
         communities.push(newCommunity)
         currentUser.community = name
+        currentUser.communityObject = newCommunity
         SaveLocal("communities", communities)
         SaveLocal("currentUser", currentUser)
         // window.location.href = "/home/cmb/Desktop/MastersThesis/community_search_results.html"

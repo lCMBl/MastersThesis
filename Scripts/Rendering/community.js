@@ -6,7 +6,7 @@ function GetRenderCommunityBlurb(communityInfo) {
     return `
     <div>
         <h4><a href="community_view.html?name=${communityInfo.name}">${communityInfo.name}</a> | 
-        ${GetCommunityStatus(communityInfo.established)} ${communityInfo.establishmentDate}</h4>
+        ${GetCommunityStatus(communityInfo.established)} ${GetAmericanSlashDateString(new Date(communityInfo.establishmentDate))}</h4>
     </div>
     `
 }
@@ -43,10 +43,13 @@ function GetRenderCommunityInfo(communityInfo) {
 }
 
 function GetRenderCommunityPledgeLink(communityInfo) {
-    return `<p><a href="${
-        communityInfo.established ? "Community/Pages/newsletter_view.html":"community_pledged.html"
-    }?name=${communityInfo.name}">
+    return `<p><a id=pledge_link href="#">
     ${communityInfo.established ? "Join": "Pledge To"} this Community</a></p>`
+    
+    // return `<p><a href="${
+    //     communityInfo.established ? "Community/Pages/newsletter_view.html":"community_pledged.html"
+    // }?name=${communityInfo.name}">
+    // ${communityInfo.established ? "Join": "Pledge To"} this Community</a></p>`
 }
 
 /*
