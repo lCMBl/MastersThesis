@@ -74,7 +74,7 @@ SaveLocal("currentUser", {
 
 SaveLocal("assignedCircle", {
     name:"Community Circle",
-    cdate:"03/24/2020",
+    cdate:"3/24/2020",
     memberHrefs:[
         "Aunt Jemima",
         "Scrouge",
@@ -111,10 +111,10 @@ SaveLocal("foundActiveDiscussions", [
             "Scrouge",
             "Christian"
         ],
-        cdate:"03/24/2020",
+        cdate:"3/24/2020",
         decision:"Undecided",
         ddate:"null",
-        deadline:"03/29/2020"
+        deadline:"3/29/2020"
     }
 ])
 
@@ -125,7 +125,7 @@ SaveLocal("foundActiveStakes", {"Setting up a local farmer's market":[
         position:"The Old Lot",
         explanation:`By using the old lot, we'll clean up an eyesore 
         and at the same time gain more usable space!`,
-        cdate:"03/24/2020"
+        cdate:"3/24/2020"
     },
     {
         author:"Aunt Jemima", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
@@ -133,7 +133,7 @@ SaveLocal("foundActiveStakes", {"Setting up a local farmer's market":[
         position:"The Old Lot",
         explanation:`We're already using the park pretty frequntly.
         Best not to overload it.`,
-        cdate:"03/24/2020"
+        cdate:"3/24/2020"
     },
     {
         author:"Scrouge", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
@@ -141,7 +141,7 @@ SaveLocal("foundActiveStakes", {"Setting up a local farmer's market":[
         position:"No Farmer's Market",
         explanation:`Both the park and the old lot see a lot of traffic. Its already bad enough!
         I dont want any more traffic!`,
-        cdate:"03/24/2020"
+        cdate:"3/24/2020"
     }
 ]
 })
@@ -166,8 +166,8 @@ SaveLocal("foundArchivedDiscussions", [
         ],
         cdate:"03/24/2020",
         decision:"Yes",
-        ddate:"03/26/2020",
-        deadline:"03/29/2020"
+        ddate:"3/26/2020",
+        deadline:"3/29/2020"
     }
 ])
 
@@ -177,33 +177,33 @@ SaveLocal("foundArchivedStakes", {"Should we Stay Inside?":[
         // however, this isn't shown to people (needs to be anonymous)
         position:"No",
         explanation:`I'm going crazy in here!`,
-        cdate:"03/24/2020, 08:00:00"
+        cdate:"3/24/2020, 08:00:00"
     },
     {
         author:"Aunt Jemima", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
         // however, this isn't shown to people (needs to be anonymous)
         position:"Yes",
         explanation:`I don't want to get sick or be cold.`,
-        cdate:"03/24/2020, 08:00:00"
+        cdate:"3/24/2020, 08:00:00"
     },
     {
         author:"Scrouge", // not necessary for actual deployment? (author stores their own positions on their mounted drive)
         // however, this isn't shown to people (needs to be anonymous)
         position:"Yes",
         explanation:`I don't like people`,
-        cdate:"03/24/2020, 08:00:00"
+        cdate:"3/24/2020, 08:00:00"
     }
 ]})
 
 SaveLocal("foundPosts", 
-{"03/24/2020":[
+{"3/24/2020":[
     {
         title:"Free Vegetables!",
         body:"My garden has been growing wild this year. We have all sorts of vegetables if anyone wants some!",
         author:"Aunt Jemima",
         href:"#", // actually a link to the author's public profile drive.
-        cdate:"03/23/2020",
-        pdate:"03/24/2020"
+        cdate:"3/23/2020",
+        pdate:"3/24/2020"
     },
     {
         title:"Need help with insulation",
@@ -211,54 +211,54 @@ SaveLocal("foundPosts",
         "I'll have pizza for anyone that wants to help me out!",
         author:"Christian",
         href:"#", // actually a link to the author's public profile drive.
-        cdate:"03/23/2020",
-        pdate:"03/24/2020"
+        cdate:"3/23/2020",
+        pdate:"3/24/2020"
     },
     {
         title:"Get Off My Lawn",
         body:"All you kids need to get off my lawn! Inone of use should even be able to post today because we all made red marks!",
         author:"Scrouge",
         href:"#", // actually a link to the author's public profile drive.
-        cdate:"03/23/2020",
-        pdate:"03/24/2020"
+        cdate:"3/23/2020",
+        pdate:"3/24/2020"
     }
 ],
-"03/25/2020":[
+"3/25/2020":[
     {
         title:"Scrouge is terrible",
         body:"Why do we even have him on here?",
         author:"Christian",
         href:"#", // actually a link to the author's public profile drive.
-        cdate:"03/24/2020",
-        pdate:"03/25/2020"
+        cdate:"3/24/2020",
+        pdate:"3/25/2020"
     },
     {
         title:"Too much hostility",
         body:"There has been too much anger lately. I've contributed to it too for which I'm Sorry.",
         author:"Christian",
         href:"#", // actually a link to the author's public profile drive.
-        cdate:"03/24/2020",
-        pdate:"03/25/2020"
+        cdate:"3/24/2020",
+        pdate:"3/25/2020"
     }
 ]
 })
 
 SaveLocal("foundRedMarks", {
-    "03/24/2020":[
+    "3/24/2020":[
         {
             href:"Aunt JemimaFree Vegetables!",
             marker:"Scrouge",
-            cdate:"03/24/2020"
+            cdate:"3/24/2020"
         },
         {
             href:"ScrougeGet Off My Lawn",
             marker:"Christian",
-            cdate:"03/24/2020"
+            cdate:"3/24/2020"
         },
         {
             href:"ScrougeGet Off My Lawn",
             marker:"Aunt Jemima",
-            cdate:"03/24/2020"
+            cdate:"3/24/2020"
         }
     ]
 })
