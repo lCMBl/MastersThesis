@@ -12,6 +12,9 @@ prevDayArrow.addEventListener('click', PreviousDay)
 let nextDayArrow = document.getElementById("next_date")
 nextDayArrow.addEventListener('click', NextDay)
 
+// let markLinks = 
+
+
 let foundPosts = []
 let marks = []
 
@@ -98,4 +101,18 @@ function GetQueryDate(urlDateString) {
     }
     
     return result
+}
+
+// = red mark functions
+//
+
+function GiveRedMark(target) {
+    // rely on text from button to give target for red mark
+    // because text could be modified before sending here, 
+    // need to check:
+    // a) the post was published the same day the mark was created.
+    // b) this user is not the author of the post
+    // c) this user doesn't have any pending posts for tomorrow.
+    // d) this user hasn't already marked this post.
+    // after all of those are checked, mark the post!
 }

@@ -17,7 +17,7 @@ function GetRenderPost(post) {
     <h4>${post.title}</h4>
     <p>Posted by <a href="${post.href}">${post.author}</a></p>
     <p>${post.body}</p>
-    ${allowMark ? `<p><a href="#">Give this post a Red Mark (eventually a button in the corner)</a></p>` : ""}
+    ${allowMark ? `<button class="red_mark_button" >X</button>` : ""}
     <h4>${GetRedMarkCount(post, post.allMarks)}</h4>
     </div>
     <br>
@@ -46,7 +46,7 @@ function GetRenderPendingPost(post) {
 */
 
 function MarkMatchesPost(mark, post) {
-    return mark.href == post.author + post.title
+    return mark.href === post.author + post.title
 }
 
 function HasMarkedPost(post, marks, user) {

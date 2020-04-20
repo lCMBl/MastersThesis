@@ -27,7 +27,7 @@ function JoinCommunity(e) {
         // when this actually mounts to the community drive, other queries will pick up the changed member count.
         SaveLocal("currentUser", currentUser)
         if (community.established) {
-            window.location.replace("Community/Pages/newsletter_view.html")
+            window.location.replace("newsletter_view.html")
         } else {
             window.location.replace("community_pledged.html")
         } 
