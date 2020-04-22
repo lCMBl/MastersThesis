@@ -11,14 +11,19 @@
 
 
 function GetRenderPost(post) {
-    allowMark = post.currentUser.name != post.author && !HasMarkedPost(post, post.allMarks, post.currentUser)
+    let allowMark = post.currentUser.name != post.author && !HasMarkedPost(post, post.allMarks, post.currentUser)
+    if (post.pdate != GetAmericanSlashDateString(new Date())) {
+        allowMark = false
+    }
+    let rmc = GetRedMarkCount(post, post.allMarks)
+    let markCountString = rmc === 0 ? '': `<h4 style="color:red">${rmc}</h4>`
     return `
     <div>
     <h4>${post.title}</h4>
     <p>Posted by <a href="${post.href}">${post.author}</a></p>
     <p>${post.body}</p>
     ${allowMark ? `<button onclick="GiveRedMark('${post.author}', '${post.title}', '${post.pdate}')">X</button>` : ""}
-    <h4>${GetRedMarkCount(post, post.allMarks)}</h4>
+    ${markCountString}
     </div>
     <br>
     `
