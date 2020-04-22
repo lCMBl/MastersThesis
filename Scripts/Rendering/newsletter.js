@@ -17,7 +17,7 @@ function GetRenderPost(post) {
     <h4>${post.title}</h4>
     <p>Posted by <a href="${post.href}">${post.author}</a></p>
     <p>${post.body}</p>
-    ${allowMark ? `<button class="red_mark_button" >X</button>` : ""}
+    ${allowMark ? `<button onclick="GiveRedMark('${post.author}', '${post.title}', '${post.pdate}')">X</button>` : ""}
     <h4>${GetRedMarkCount(post, post.allMarks)}</h4>
     </div>
     <br>

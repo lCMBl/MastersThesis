@@ -77,7 +77,7 @@ function RenderNewsletterForDay() {
 
     foundPosts = allPosts[dateSearchBar.value] || []
     marks = allMarks[dateSearchBar.value] || []
-
+    // TODO make sure to count each mark once per author.
     foundPosts.forEach(p => {
         p.allMarks = marks
         p.currentUser = currentUser
@@ -106,7 +106,7 @@ function GetQueryDate(urlDateString) {
 // = red mark functions
 //
 
-function GiveRedMark(target) {
+function GiveRedMark(targetAuthor, targetTitle, date) {
     // rely on text from button to give target for red mark
     // because text could be modified before sending here, 
     // need to check:
@@ -115,4 +115,64 @@ function GiveRedMark(target) {
     // c) this user doesn't have any pending posts for tomorrow.
     // d) this user hasn't already marked this post.
     // after all of those are checked, mark the post!
+    console.log(`Giving red mark to ${targetAuthor}'s post titled ${targetTitle}`)
+    // first, retrieve the post object specified.
+    let postsForDay = GetLocal("foundPosts")[date] || []
+    let targetPost = null
+    for (let i = 0; i < postsForDay.length; i++ ) {
+        let p = postsForDay[i]
+        if (p.title === targetTitle && p.author === targetAuthor) {
+            targetPost = p
+            break
+        }
+    }
+
+    if (targetPost === null) {
+        console.warn("No matching post found")
+        return false
+    }
+    // a)
+    let sameDayAsPublished = DateCheck(new Date(), new Date(targetPost.pdate))
+    // b)
+    let validAuthor = targetPost.author != currentUser.name
+    // c)
+    let tomorrowsDate = new Date(new Date().getTime() + (24 * 3600000))
+    let postsForTomorrow = GetLocal("foundPosts")[GetAmericanSlashDateString(tomorrowsDate)] || []
+    let noPendingPosts = true
+    postsForTomorrow.forEach(p => {
+        if (p.author === currentUser.name) {
+            noPendingPosts = false
+        }
+    })
+    // d) 
+    let hasntMarkedPost = true
+    marks.forEach(m => {
+        if (m.marker === currentUser.name && m.href === targetPost.author+targetPost.title) {
+            hasntMarkedPost = false
+        }
+    })
+
+    // finally, mark the post.
+    if (sameDayAsPublished && validAuthor && noPendingPosts && hasntMarkedPost) {
+        // save mark
+        let dateString = GetAmericanSlashDateString(new Date())
+        // if allmark doesnt have this date, add it
+        if (!IsDefined(allMarks, dateString)) {
+            allMarks[dateString] = []
+        }
+        // push this mark to the appropriate day
+        allMarks[dateString].push({
+            href:targetPost.author+targetPost.title,
+            marker:currentUser.name,
+            cdate:dateString
+        })
+
+        // save local marks.
+        SaveLocal("foundRedMarks", allMarks)
+    } else if (!noPendingPosts) {
+        alert("Cannot give a post a red mark while you have posts that are pending publication")
+    } else if (!sameDayAsPublished) {
+        alert("Cannot mark a post after the day of its publication")
+    }
+
 }
