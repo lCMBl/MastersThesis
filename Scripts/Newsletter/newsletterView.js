@@ -107,6 +107,11 @@ function GetQueryDate(urlDateString) {
 //
 
 function GiveRedMark(targetAuthor, targetTitle, date) {
+    // confirm that the user wants to give a post
+    let confirmed = confirm(`You are about to give ${targetAuthor} a Red Mark for a bad post. This is permanent. Are you sure you want to do this?`)
+    if (!confirmed) {
+        return false
+    }
     // rely on text from button to give target for red mark
     // because text could be modified before sending here, 
     // need to check:
@@ -116,8 +121,9 @@ function GiveRedMark(targetAuthor, targetTitle, date) {
     // d) this user hasn't already marked this post.
     // after all of those are checked, mark the post!
     console.log(`Giving red mark to ${targetAuthor}'s post titled ${targetTitle}`)
+    let slashDate = GetAmericanSlashDateString(new Date(date))
     // first, retrieve the post object specified.
-    let postsForDay = GetLocal("foundPosts")[date] || []
+    let postsForDay = GetLocal("foundPosts")[slashDate] || []
     let targetPost = null
     for (let i = 0; i < postsForDay.length; i++ ) {
         let p = postsForDay[i]
@@ -169,10 +175,16 @@ function GiveRedMark(targetAuthor, targetTitle, date) {
 
         // save local marks.
         SaveLocal("foundRedMarks", allMarks)
+
+        // reload the page (simplest way to show changes.)
+        location.reload()
+        // return successful
+        return true
     } else if (!noPendingPosts) {
         alert("Cannot give a post a red mark while you have posts that are pending publication")
     } else if (!sameDayAsPublished) {
         alert("Cannot mark a post after the day of its publication")
     }
 
+    return false
 }

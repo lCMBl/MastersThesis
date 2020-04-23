@@ -12,7 +12,7 @@
 
 function GetRenderPost(post) {
     let allowMark = post.currentUser.name != post.author && !HasMarkedPost(post, post.allMarks, post.currentUser)
-    if (post.pdate != GetAmericanSlashDateString(new Date())) {
+    if (!DateCheck(new Date(post.pdate), new Date())) {
         allowMark = false
     }
     let rmc = GetRedMarkCount(post, post.allMarks)
